@@ -11,31 +11,31 @@
 
 # aws_configure_role/tasks/configure_aws.yml
 
-# - name: Configure AWS CLI aws_access_key_id
-#   command: aws configure set aws_access_key_id {{ aws_access_key_id }}
-#   when: aws_access_key_id is defined and aws_secret_access_key is defined
-#   register: aws_cli_configure_access_key
-#   changed_when: false
+- name: Configure AWS CLI aws_access_key_id
+  command: aws configure set aws_access_key_id {{ aws_access_key_id }}
+  when: aws_access_key_id is defined and aws_secret_access_key is defined
+  register: aws_cli_configure_access_key
+  changed_when: false
 
-# - name: Configure AWS CLI aws_secret_access_key
-#   command: aws configure set aws_secret_access_key {{ aws_secret_access_key }}
-#   when: aws_access_key_id is defined and aws_secret_access_key is defined
-#   register: aws_cli_configure_secret_key
-#   changed_when: false
+- name: Configure AWS CLI aws_secret_access_key
+  command: aws configure set aws_secret_access_key {{ aws_secret_access_key }}
+  when: aws_access_key_id is defined and aws_secret_access_key is defined
+  register: aws_cli_configure_secret_key
+  changed_when: false
 
-# - name: Configure AWS CLI default region
-#   command: aws configure set default.region {{ aws_region }}
-#   when: aws_access_key_id is defined and aws_secret_access_key is defined
-#   register: aws_cli_configure_region
-#   changed_when: false
+- name: Configure AWS CLI default region
+  command: aws configure set default.region {{ aws_region }}
+  when: aws_access_key_id is defined and aws_secret_access_key is defined
+  register: aws_cli_configure_region
+  changed_when: false
 
-# - name: Display AWS CLI configuration outputs
-#   debug:
-#     msg: |
-#       Access Key Configure Output: {{ aws_cli_configure_access_key.stdout }}
-#       Secret Key Configure Output: {{ aws_cli_configure_secret_key.stdout }}
-#       Region Configure Output: {{ aws_cli_configure_region.stdout }}
-#   when: aws_access_key_id is defined and aws_secret_access_key is defined
+- name: Display AWS CLI configuration outputs
+  debug:
+    msg: |
+      Access Key Configure Output: {{ aws_cli_configure_access_key.stdout }}
+      Secret Key Configure Output: {{ aws_cli_configure_secret_key.stdout }}
+      Region Configure Output: {{ aws_cli_configure_region.stdout }}
+  when: aws_access_key_id is defined and aws_secret_access_key is defined
 
 
 
@@ -45,7 +45,4 @@
   when:
     - aws_region is defined
     - cluster_name is defined
-  retries: 3
-  delay: 60
-  register: eksctl_create_cluster_output
-  until: eksctl_create_cluster_output.rc == 0
+
