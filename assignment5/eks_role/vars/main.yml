@@ -1,6 +1,6 @@
 ---
 # vars file for eks_role
-aws_region: us-east-2
+aws_region: us-east-1
 cluster_name: my-cluster1
 aws_access_key: <<--add your access key-->>
 aws_secret_key: <<--add your secret key-->>
