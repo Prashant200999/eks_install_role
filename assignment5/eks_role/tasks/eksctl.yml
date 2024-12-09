@@ -1,0 +1,12 @@
+---
+- name: Download eksctl binary
+  shell: |
+    curl -LO "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz"
+    tar -xzf eksctl_$(uname -s)_amd64.tar.gz
+    mv eksctl /usr/local/bin/
+  args:
+    creates: /usr/local/bin/eksctl
+
+- name: Verify eksctl installation
+  command: eksctl version
+  register: eksctl_version
