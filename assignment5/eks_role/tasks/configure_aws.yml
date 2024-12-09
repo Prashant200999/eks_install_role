@@ -1,15 +1,15 @@
 ---
 - name: Configure AWS CLI with access keys
- command: aws configure
- environment:
+  command: aws configure
+  environment:
    AWS_ACCESS_KEY_ID: "{{ aws_access_key }}"
    AWS_SECRET_ACCESS_KEY: "{{ aws_secret_key }}"
    AWS_DEFAULT_REGION: "{{ aws_region }}"
- when: aws_access_key is defined and aws_secret_key is defined
+  when: aws_access_key is defined and aws_secret_key is defined
 
 
 
-aws_configure_role/tasks/configure_aws.yml
+# aws_configure_role/tasks/configure_aws.yml
 
 - name: Configure AWS CLI aws_access_key_id
   command: aws configure set aws_access_key_id {{ aws_access_key }}
