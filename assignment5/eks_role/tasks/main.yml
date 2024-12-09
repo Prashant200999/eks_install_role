@@ -1,7 +1,7 @@
 ---
 # tasks file for eks_role
-# - name: Install AWS CLI
-#   include_tasks: aws_cli.yml
+- name: Install AWS CLI
+  include_tasks: aws_cli.yml
 
 - name: Install kubectl
   include_tasks: kubectl.yml
